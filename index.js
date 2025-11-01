@@ -66,6 +66,11 @@ async function run(){
             const resuslt = await productCollection.updateOne(query,update,option)
             res.send(resuslt);
         })
+        
+        app.get('/porducts', async(req,res)=>{
+            const resuslt = await productCollection.find().toArray()
+            res.send(resuslt);
+        })
 
         await client.db('admin').command({ping : 1});
         console.log("ping your deployment.you successfully connected to MongoDB")
