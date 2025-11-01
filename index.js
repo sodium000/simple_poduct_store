@@ -68,7 +68,7 @@ async function run(){
         })
         
         app.get('/porducts', async(req,res)=>{
-            const resuslt = await productCollection.find().toArray()
+            const resuslt = await (await productCollection.find().sort({price_min:1}).toArray())
             res.send(resuslt);
         })
 
